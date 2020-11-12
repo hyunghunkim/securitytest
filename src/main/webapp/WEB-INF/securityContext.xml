@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+    <bean id="customeAccessDenied" class="org.secu.security.CustomeAccessDeniedHandler"/>
+    <bean id="customLoginSuccess" class="org.secu.security.CustomLoginSuccessHandler"/>
+    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <bean id="CustomUserDetailsService" class="org.secu.security.CustomUserDetailsService"/>
+
+
+    <security:authentication-manager>
+        <security:authentication-provider
+        user-service-ref="CustomUserDetailsService">
+<!--            DB연결-->
+<!--            <security:jdbc-user-service data-source-ref="dataSource"-->
+<!--            users-by-username-query="select username , password , name from member where username = ?"-->
+<!--            authorities-by-username-query="select username , auth from member_auth where username = ?"/>-->
+<!--            password인코딩-->
+            <security:password-encoder ref="bcryptPasswordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <security:http auto-config="true" use-expressions="true">
+        <security:csrf disabled="false"/>
+<!--        <security:intercept-url pattern="/sample/all" access="permitAll"/>-->
+        <security:intercept-url pattern="/**" access="permitAll"/>
+<!--        <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>-->
+<!--        <security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>-->
+        <security:access-denied-handler ref="customeAccessDenied"/>
+        <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
+        <security:logout logout-url="/customLogout" invalidate-session="true"
+                         delete-cookies="remember-me,JSESSION_ID"/>
+<!--        자동로그인 토큰 설정-->
+        <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
+    </security:http>
+
+
+</beans>
