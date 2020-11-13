@@ -19,18 +19,22 @@
     </resultMap>
 
     <select id="read" resultMap="memberMap">
-        select mem.username, password, name, auth from member mem left outer join member_auth auth
+        select mem.username, password, name, auth.auth from member mem left outer join member_auth auth
         on mem.username = auth.username where mem.username = #{username}
     </select>
 
     <insert id="insert">
-        insert into member (username, password, name)
-        values (#{username}, #{password}, #{name})
+        insert into member (username, password, name, auth)
+        values (#{username}, #{password}, #{name}, #{auth})
     </insert>
 
     <insert id="insertAuth">
         insert into member_auth (username, auth)
         values (#{username}, #{auth})
     </insert>
+
+    <select id="checkId" parameterType="String" resultType="int">
+        select count(*) from member where username = #{username}
+    </select>
 
 </mapper>

@@ -8,5 +8,12 @@
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="project" uuid="a5c6b64f-9973-483e-b81e-4c1e4aed1892">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@kosta-wof-project-db.cjsmm2q2xupk.ap-northeast-1.rds.amazonaws.com:1521:ORCL</jdbc-url>
+    </data-source>
   </component>
 </project>

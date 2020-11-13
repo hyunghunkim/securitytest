@@ -26,6 +26,14 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
             httpServletResponse.sendRedirect("sample/member");
             return;
         }
+        if (roleNames.contains("ROLE_CLIENT")){
+            httpServletResponse.sendRedirect("sample/client");
+            return;
+        }
+        if (roleNames.contains("ROLE_PARTNERS")){
+            httpServletResponse.sendRedirect("sample/partners");
+            return;
+        }
         if (roleNames.contains("ROLE_USER")){
             httpServletResponse.sendRedirect("sample/all");
             return;

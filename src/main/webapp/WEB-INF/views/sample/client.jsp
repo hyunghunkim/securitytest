@@ -8,14 +8,13 @@
     <title>Title</title>
 </head>
 <body>
-<h1>admin</h1>
+<h1>client</h1>
 
 <p>principal : <sec:authentication property="principal"/></p>
 <p>MemberVO : <sec:authentication property="principal.member"/></p>
 <p>사용자 이름 : <sec:authentication property="principal.member.name"/></p>
 <p>사용자 아이디 : <sec:authentication property="principal.username"/></p>
 <p>사용자 권한 리스트 : <sec:authentication property="principal.member.authList"/></p>
-<p>권한 : <sec:authentication property="principal.member.auth"/></p>
 
 <a href="/customLogout">Logout</a>
 </body>

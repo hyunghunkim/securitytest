@@ -30,4 +30,11 @@ public class MemberServiceImpl implements MemberService{
         mapper.insertAuth(authVO);
     }
 
+    @Override
+    public int userIdCheck(String username) {
+
+        return mapper.checkId(username);
+    }
+
+
 }

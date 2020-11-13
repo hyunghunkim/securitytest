@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cecu:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/cecu_war</output-path>
+    <root id="archive" name="cecu_war.war">
+      <element id="artifact" artifact-name="cecu:war exploded" />
+    </root>
+  </artifact>
+</component>

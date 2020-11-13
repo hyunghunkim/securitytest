@@ -15,4 +15,5 @@
 
     <context:component-scan base-package="org.secu.controller"/>
     <context:annotation-config/>
+
 </beans>
