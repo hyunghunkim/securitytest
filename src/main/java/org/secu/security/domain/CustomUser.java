@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Getter
 public class CustomUser extends User {
